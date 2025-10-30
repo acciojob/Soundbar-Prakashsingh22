@@ -1,8 +1,10 @@
+// Array of available sounds
 const sounds = ['applause', 'boo', 'gasp', 'tada', 'victory', 'wrong'];
 
-const buttonsContainer = document.getElementById('buttons');
+// Reference to the container
+const buttons = document.getElementById('buttons');
 
-// Create buttons dynamically
+// Create one button per sound
 sounds.forEach(sound => {
   const btn = document.createElement('button');
   btn.classList.add('btn');
@@ -14,17 +16,17 @@ sounds.forEach(sound => {
     audio.play();
   });
 
-  buttonsContainer.appendChild(btn);
+  buttons.appendChild(btn);
 });
 
-// Add a stop button
+// Create stop button
 const stopBtn = document.createElement('button');
 stopBtn.classList.add('btn', 'stop');
 stopBtn.innerText = 'stop';
 stopBtn.addEventListener('click', stopAllSounds);
-buttonsContainer.appendChild(stopBtn);
+buttons.appendChild(stopBtn);
 
-// Stop function
+// Function to stop all sounds
 function stopAllSounds() {
   sounds.forEach(sound => {
     const audio = new Audio(`sounds/${sound}.mp3`);
